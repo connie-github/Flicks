@@ -12,6 +12,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorView: UIView!
+    @IBOutlet weak var errorImage: UIImageView!
     
     var movies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
@@ -29,7 +30,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
 
-        fetchMovies()
+        // Network error icon
+        errorImage.image = UIImage(named: "error")
+        
+        fetchMovies(nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,12 +57,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    // unselect cell
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    // Unselect cell
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
-    func fetchMovies() {
+    func fetchMovies(refreshControl: UIRefreshControl?) {
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string:"http://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
@@ -78,58 +82,24 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 if let requestError = requestError {
                     NSLog("error: \(requestError)")
-//                    errorCallback?(requestError)
+                    self.errorView.hidden = false
                 } else {
                     if let data = data {
                         if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(data, options:[]) as? NSDictionary {
                             NSLog("response: \(responseDictionary)")
+                            self.errorView.hidden = true
                             self.movies = responseDictionary["results"] as! [NSDictionary]?
                             self.tableView.reloadData()
                         }
                     }
                 }
+                refreshControl?.endRefreshing()
         })
         task.resume()
     }
     
-    // Makes a network request to get updated data
-    // Updates the tableView with the new data
-    // Hides the RefreshControl
     func refreshControlAction(refreshControl: UIRefreshControl) {
-        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"http://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
-        let request = NSURLRequest(URL: url!)
-        let session = NSURLSession(
-            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-            delegate:nil,
-            delegateQueue:NSOperationQueue.mainQueue()
-        )
-        
-        // Display HUD right before the request is made
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        
-        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
-            completionHandler: { (data, response, requestError) in
-                // Hide HUD once the network request comes back
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-                
-                if let requestError = requestError {
-                    self.errorView.hidden = true
-                    NSLog("error: \(requestError)")
-                } else {
-                    if let data = data {
-                        if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(data, options:[]) as? NSDictionary {
-                            self.errorView.hidden = false
-                            NSLog("response: \(responseDictionary)")
-                            self.movies = responseDictionary["results"] as! [NSDictionary]?
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-                // Tell the refreshControl to stop spinning
-                refreshControl.endRefreshing()
-        })
-        task.resume()
+        fetchMovies(refreshControl)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

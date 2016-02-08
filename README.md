@@ -2,19 +2,18 @@
 
 **Flicks** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: 10 hours spent in total
+Time spent: ~8 hrs
 
-## User Stories
 
-The following **required** functionality is completed:
+**Required** functionality:
 
 - [x] User can view a list of movies currently playing in theaters. Poster images load asynchronously.
 - [x] User can view movie details by tapping on a cell.
 - [x] User sees loading state while waiting for the API.
-- [ ] User sees an error message when there is a network error.
+- [x] User sees an error message when there is a network error.
 - [x] User can pull to refresh the movie list.
 
-The following **optional** features are implemented:
+**Optional** features:
 
 - [x] Add a tab bar for **Now Playing** and **Top Rated** movies.
 - [ ] Implement segmented control to switch between list view and grid view.
@@ -26,10 +25,7 @@ The following **optional** features are implemented:
 
 
 
-## Video Walkthrough
+![Demo](flicksdemo.gif)
 
-Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [LiceCap](http://www.cockos.com/licecap/)

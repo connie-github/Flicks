@@ -11,7 +11,6 @@
 		F952EC3B1C6865540072F17A /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F952EC3A1C6865540072F17A /* MovieModel.swift */; };
 		F9650C0D1C621C02001A20DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9650C0C1C621C02001A20DD /* AppDelegate.swift */; };
 		F9650C121C621C02001A20DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9650C101C621C02001A20DD /* Main.storyboard */; };
-		F9650C141C621C02001A20DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9650C131C621C02001A20DD /* Assets.xcassets */; };
 		F9650C171C621C02001A20DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9650C151C621C02001A20DD /* LaunchScreen.storyboard */; };
 		F9650C1F1C621C76001A20DD /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9650C1E1C621C76001A20DD /* MoviesViewController.swift */; };
 		F9650C221C622456001A20DD /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9650C211C622456001A20DD /* MovieCell.swift */; };
@@ -26,7 +25,6 @@
 		F9650C091C621C02001A20DD /* Flicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9650C0C1C621C02001A20DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9650C111C621C02001A20DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F9650C131C621C02001A20DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9650C161C621C02001A20DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9650C181C621C02001A20DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9650C1E1C621C76001A20DD /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 				F9650C201C622421001A20DD /* Views */,
 				F9650C0C1C621C02001A20DD /* AppDelegate.swift */,
 				F9650C101C621C02001A20DD /* Main.storyboard */,
-				F9650C131C621C02001A20DD /* Assets.xcassets */,
 				F9650C151C621C02001A20DD /* LaunchScreen.storyboard */,
 				F9650C181C621C02001A20DD /* Info.plist */,
 			);
@@ -184,7 +181,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9650C171C621C02001A20DD /* LaunchScreen.storyboard in Resources */,
-				F9650C141C621C02001A20DD /* Assets.xcassets in Resources */,
 				F9650C121C621C02001A20DD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
